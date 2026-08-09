@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      python-quality-tools:
+        patterns: ["*"]
+  - package-ecosystem: docker
+    directory: "/deploy"
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: ubuntu
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-major"

@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   cpp-deep-quality:
-    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-deep-quality.yml@v0.3.1
+    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-deep-quality.yml@v0.4.0
     with:
       conan-profile: conan/profiles/linux-gcc-x64
       clang-profile: conan/profiles/linux-clang-x64
