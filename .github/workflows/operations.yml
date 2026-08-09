@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   cpp-operations:
-    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-operations.yml@v0.2.1
+    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-operations.yml@v0.2.2
     with:
       conan-profile: conan/profiles/linux-gcc-x64
       conan-lockfile: conan/locks/linux-gcc-x64-release.lock
