@@ -9,7 +9,7 @@ permissions:
   attestations: write
 jobs:
   cpp-release:
-    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-release.yml@v0.3.1
+    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-release.yml@v0.4.0
     with:
       conan-profile: conan/profiles/linux-gcc-x64
       conan-lockfile: conan/locks/linux-gcc-x64-release.lock
