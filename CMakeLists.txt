@@ -28,7 +28,9 @@ set_target_properties(foundation_smoke_service PROPERTIES OUTPUT_NAME foundation
 target_link_libraries(foundation_smoke_service PRIVATE foundation_smoke_service_core fmt::fmt)
 foundation_enable_warnings(foundation_smoke_service)
 foundation_enable_coverage(foundation_smoke_service)
-set_target_properties(foundation_smoke_service PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(
+    foundation_smoke_service PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+)
 
 if(ENABLE_TESTING)
     include(CTest)
@@ -46,7 +48,9 @@ if(ENABLE_FUZZ)
         message(FATAL_ERROR "ENABLE_FUZZ requires Clang")
     endif()
     add_executable(fuzz_request_parser fuzz/fuzz_request_parser.cpp)
-    target_compile_options(foundation_smoke_service_core PRIVATE -fsanitize=fuzzer-no-link,address,undefined)
+    target_compile_options(
+        foundation_smoke_service_core PRIVATE -fsanitize=fuzzer-no-link,address,undefined
+    )
     target_link_libraries(fuzz_request_parser PRIVATE foundation_smoke_service_core)
     target_compile_options(fuzz_request_parser PRIVATE -fsanitize=fuzzer,address,undefined)
     target_link_options(fuzz_request_parser PRIVATE -fsanitize=fuzzer,address,undefined)
