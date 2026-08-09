@@ -1,0 +1,30 @@
+name: Foundation / Nightly Compatibility
+on:
+  schedule:
+    - cron: "49 1 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compatibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install supported foundation toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build
+          python3 -m pip install "conan==2.8.1" \
+            "git+https://github.com/HoneyBury/cpp-project-foundation.git@v0.3.1"
+      - name: Validate compatibility and managed assets
+        run: |
+          cpp-foundation --manifest foundation.toml doctor --root . --strict-tools
+          cpp-foundation --manifest foundation.toml template-diff --root .
