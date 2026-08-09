@@ -1,7 +1,7 @@
 # Foundation Smoke Service
 
 Independent end-to-end consumer of
-[`HoneyBury/cpp-project-foundation@v0.2.2`](https://github.com/HoneyBury/cpp-project-foundation/releases/tag/v0.2.2).
+[`HoneyBury/cpp-project-foundation@v0.2.3`](https://github.com/HoneyBury/cpp-project-foundation/releases/tag/v0.2.3).
 
 This repository validates generated naming, GitHub-hosted reusable workflows,
 immutable releases, artifact verification, and bounded operations without using
