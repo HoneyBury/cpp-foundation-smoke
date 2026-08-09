@@ -1,0 +1,15 @@
+config:
+  MD013: false
+  MD024:
+    siblings_only: true
+  MD033: false
+globs:
+  - "**/*.md"
+ignores:
+  - ".conan2/**"
+  - ".tools/**"
+  - ".venv/**"
+  - "**/build/**"
+  - "dist/**"
+  - "examples/foundation-smoke-service/build/**"
+  - "runtime/**"

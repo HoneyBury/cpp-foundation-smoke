@@ -1,0 +1,18 @@
+[Unit]
+Description=Foundation-managed foundation-smoke-service Compose deployment
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/foundation-smoke-service/current
+EnvironmentFile=/etc/foundation-smoke-service/production.env
+ExecStart=/usr/bin/docker compose -f deploy/docker-compose.yml up -d --remove-orphans
+ExecStop=/usr/bin/docker compose -f deploy/docker-compose.yml down
+TimeoutStartSec=300
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target

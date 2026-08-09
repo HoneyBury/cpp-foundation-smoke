@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "maximum_clean_build_seconds": 180.0,
+  "maximum_release_binary_bytes": 1048576,
+  "minimum_branch_coverage_percent": 80.0,
+  "minimum_line_coverage_percent": 90.0
+}

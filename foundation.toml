@@ -1,0 +1,29 @@
+schema_version = 1
+
+[project]
+name = "foundation-smoke-service"
+version = "0.1.0"
+
+[build]
+target = "foundation_smoke_service"
+test_target = "foundation_smoke_service_tests"
+fuzz_targets = ["fuzz_request_parser"]
+profile = "conan/profiles/linux-gcc-x64"
+lockfile = "conan/locks/linux-gcc-x64-release.lock"
+
+[release]
+executables = ["build/release/bin/foundation-smoke-service"]
+include = ["deploy"]
+
+[operations]
+activate = ["docker", "compose", "-f", "deploy/docker-compose.yml", "up", "-d", "--remove-orphans"]
+verify = ["sh", "deploy/verify.sh"]
+deactivate = ["docker", "compose", "-f", "deploy/docker-compose.yml", "down"]
+canary = ["sh", "-c", "${FOUNDATION_RELEASE_DIR:-build/release}/bin/foundation-smoke-service --check"]
+benchmark = ["sh", "-c", "${FOUNDATION_RELEASE_DIR:-build/release}/bin/foundation-smoke-service --benchmark 200000"]
+hook_timeout_seconds = 120
+
+[observability]
+health_url = "http://127.0.0.1:8080/health"
+metrics_url = "http://127.0.0.1:8080/metrics"
+prometheus_retention_days = 45

@@ -1,0 +1,4 @@
+[
+  { "include": ["<bits/chrono.h>", "private", "<chrono>", "public"] },
+  { "include": ["<bits/types/sig_atomic_t.h>", "private", "<csignal>", "public"] }
+]

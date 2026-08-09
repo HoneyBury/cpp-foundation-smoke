@@ -1,0 +1,17 @@
+name: Quality / Deep Engineering Gates
+on:
+  schedule:
+    - cron: "41 5 * * 6"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cpp-deep-quality:
+    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-deep-quality.yml@v0.2.1
+    with:
+      conan-profile: conan/profiles/linux-gcc-x64
+      clang-profile: conan/profiles/linux-clang-x64
+      conan-lockfile: conan/locks/linux-gcc-x64-release.lock
+      cmake-target: foundation_smoke_service
+      test-target: foundation_smoke_service_tests
+      release-binary: bin/foundation-smoke-service

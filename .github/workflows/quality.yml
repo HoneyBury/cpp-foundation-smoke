@@ -1,0 +1,15 @@
+name: Quality / C++ Foundation
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cpp-quality:
+    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-quality.yml@v0.2.1
+    with:
+      conan-profile: conan/profiles/linux-clang-x64
+      conan-lockfile: conan/locks/linux-gcc-x64-release.lock
+      cmake-target: foundation_smoke_service
+      test-target: foundation_smoke_service_tests
