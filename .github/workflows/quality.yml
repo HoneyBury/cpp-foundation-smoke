@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   cpp-quality:
-    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-quality.yml@v0.2.2
+    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-quality.yml@v0.2.3
     with:
       conan-profile: conan/profiles/linux-clang-x64
       coverage-profile: conan/profiles/linux-gcc-x64
