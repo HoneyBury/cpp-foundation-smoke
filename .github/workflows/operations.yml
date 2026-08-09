@@ -1,5 +1,7 @@
 name: Operations / Evidence
 on:
+  schedule:
+    - cron: "11 3 * * *"
   workflow_dispatch:
     inputs:
       soak-profile:
@@ -10,9 +12,9 @@ permissions:
   contents: read
 jobs:
   cpp-operations:
-    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-operations.yml@v0.2.3
+    uses: HoneyBury/cpp-project-foundation/.github/workflows/reusable-operations.yml@v0.3.1
     with:
       conan-profile: conan/profiles/linux-gcc-x64
       conan-lockfile: conan/locks/linux-gcc-x64-release.lock
       cmake-target: foundation_smoke_service
-      soak-profile: ${{ inputs.soak-profile }}
+      soak-profile: ${{ inputs.soak-profile || 'smoke' }}

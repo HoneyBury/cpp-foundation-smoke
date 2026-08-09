@@ -1,7 +1,7 @@
 {
   "name": "cpp-project-foundation-quality-tools",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.3.0",
   "dependencies": {
     "markdownlint-cli2": "0.23.2"
   }
