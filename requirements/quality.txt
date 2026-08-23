@@ -1,3 +1,3 @@
 cmakelang==0.6.13
 gcovr==8.6
-ruff==0.16.2
+ruff==0.16.3
